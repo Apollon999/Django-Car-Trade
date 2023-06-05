@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-apollon999-djangocartra-vw5bshrelus.ws-eu98.gitpod.io', 'nordicarz.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-apollon999-djangocartra-8a8fqbpd5my.ws-eu98.gitpod.io', 'nordicarz.herokuapp.com']
 
 
 # Application definition
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'nordicarz.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # DATABASES = {
-#    'default': {
+#     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
@@ -133,7 +133,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.staticHashedCloudinaryStorage'
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
