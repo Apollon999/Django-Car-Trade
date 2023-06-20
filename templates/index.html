@@ -17,8 +17,10 @@
                         <p class="seller">Seller: {{ listing.seller }}</p>
                     </div>
                 </div>
+                <a href="{% url 'listing_detail' listing.slug %}" class="listing-link">
                 <h2 class="card-title">{{ listing.title }}</h2>
                 <p class="card-text">{{ listing.excerpt }}</p>
+                </a>
                 <hr /> 
                 <p class="card-text text-muted h6">{{ listing.created_on }} <i
                     <i class="fa-solid fa-heart"></i> {{ listing.number_of_likes }}</p>

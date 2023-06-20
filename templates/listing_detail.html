@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
-                <h1 class="post-title">{{ listing title }}</h1>
+                <h1 class="post-title">{{ listing.title }}</h1>
                 <p class="post-subtitle">{{ listing.seller }} | {{ listing.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                {% if "placeholder" in post.featured_image.url %}
+                {% if "placeholder" in listing.featured_image.url %}
                 <img src="https://cdn.pixabay.com/photo/2014/04/27/00/43/traffic-332857_1280.jpg" width="100%">
                 {% else %}
                 <img src=" {{ listing.featured_image.url }}" width="100%">
@@ -23,7 +23,7 @@
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
                 <p class="card-text ">
-                    {{ post content | safe }}
+                    {{ listing.content | safe }}
                 </p>
                 <div class="row">
 
@@ -57,10 +57,8 @@
                             {{ comment.created_on }}
                         </span> wrote:
                     </p>
-                    <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
                 </div>
-                <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
