@@ -41,7 +41,7 @@ ALLOWED_HOSTS = ['8000-apollon999-djangocartra-8wyz8pgfrjh.ws-eu100.gitpod.io', 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', 
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'django_summernote',
+    'crispy_forms',
     'trade',
 ]
 
@@ -60,6 +61,8 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL ='/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
