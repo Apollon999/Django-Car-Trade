@@ -31,25 +31,28 @@
 
                     <div class="col-1">
                         <strong>
-                            {% if user is authenticated %}
+                            
+                            {% if user.is_authenticated %}
+                           
                             <form class="d-inline" action="{% url 'listing_like' listing.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
+                        
 
-                                <button type="submit" name="tradelisting_id" value="{{listing.slug}}" class="btn-like"><i
-                                    class="fas fa-heart"></i></button>
+                                <button type="submit" name="tradelisting_id" value="{{listing.slug}}" class="btn-like">
+                                    <i class="fa-solid fa-heart"></i></button>
 
                                 {% else %}
 
-                                <button type="submit" name="tradelisting_id" value="{{listing.slug}}" class="btn-like"><i
-                                    class="far fa-heart"></i></button>
+                                <button type="submit" name="tradelisting_id" value="{{listing.slug}}" class="btn-like">
+                                    <i class="fa-regular fa-heart"></i></button>
 
                                 {% endif %}
 
                             </form>
                             {% else %}
 
-                            <span class="text-secondary"><i class="far fa-heart"></i></span>
+                            <span class="text-secondary"><i class="fa-regular fa-heart"></i></span>
                             {% endif %}
                             <span class="text-secondary"> {{ listing.number_of_likes }}</span>
                         </strong>
@@ -57,7 +60,7 @@
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
+                        <strong class="text-secondary"><i class="fa-regular fa-comments"></i>
                             {{ total_comments }}</strong>
                         {% endwith %}
                     </div>

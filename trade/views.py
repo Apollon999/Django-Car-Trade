@@ -75,4 +75,4 @@ class ListingLike(View):
         else:
             listing.likes.add(request.user)
 
-            return HttpResponseRedirect(reverse('listing_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('listing_detail', args=[slug]))
