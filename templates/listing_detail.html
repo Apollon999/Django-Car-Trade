@@ -30,7 +30,30 @@
                 <div class="row">
 
                     <div class="col-1">
-                        <strong class="text-secondary"><i class="fa-solid fa-heart"></i> {{ listing.number_of_likes }} </strong>
+                        <strong>
+                            {% if user is authenticated %}
+                            <form class="d-inline" action="{% url 'listing_like' listing.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+
+                                <button type="submit" name="tradelisting_id" value="{{listing.slug}}" class="btn-like"><i
+                                    class="fas fa-heart"></i></button>
+
+                                {% else %}
+
+                                <button type="submit" name="tradelisting_id" value="{{listing.slug}}" class="btn-like"><i
+                                    class="far fa-heart"></i></button>
+
+                                {% endif %}
+
+                            </form>
+                            {% else %}
+
+                            <span class="text-secondary"><i class="far fa-heart"></i></span>
+                            {% endif %}
+                            <span class="text-secondary"> {{ listing.number_of_likes }}</span>
+                        </strong>
+    
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
