@@ -5,17 +5,59 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
+<div class="sign-out-container">
+  <h1 class="sign-out-heading">{% trans "Sign Out" %}</h1>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+  <p class="sign-out-message">{% trans 'Are you sure you want to sign out?' %}</p>
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
+  <form class="sign-out-form" method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
+    <button class="sign-out-button" type="submit">{% trans 'Sign Out' %}</button>
+  </form>
+</div>
 
+<style>
+  .sign-out-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .sign-out-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .sign-out-message {
+    color: #888;
+    margin-bottom: 30px;
+  }
+
+  .sign-out-form {
+    display: inline-block;
+  }
+
+  .sign-out-button {
+    padding: 10px 20px;
+    background-color: #23bbbb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .sign-out-button:hover,
+  .sign-out-button:active {
+    background-color: #1b9fa8;
+  }
+</style>
 
 {% endblock %}
