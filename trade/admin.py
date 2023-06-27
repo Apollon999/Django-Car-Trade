@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Listing, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
+# Register models in admin interface and customize views
 
 @admin.register(Listing)
 class ListingAdmin(SummernoteModelAdmin):
