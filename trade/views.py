@@ -27,6 +27,7 @@ class ListingDetail(View):
             "listing_detail.html",
             {
                 "listing": listing,
+                "description": listing.description,
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
@@ -58,6 +59,7 @@ class ListingDetail(View):
             "listing_detail.html",
             {
                 "listing": listing,
+                "description": listing.description,
                 "comments": comments,
                 "commented": True,
                 "liked": liked,
