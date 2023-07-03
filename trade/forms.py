@@ -1,6 +1,5 @@
 from .models import Comment
 from django import forms
-from .models import Listing
 
 
 class CommentForm(forms.ModelForm):
@@ -8,4 +7,3 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields =('body',)
 
-class ListingForm(forms.ModelForm):
