@@ -3,6 +3,10 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Listing
 from .forms import CommentForm
+from django.views.generic import CreateView
+
+from .forms import ListingForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class ListingList(generic.ListView):
@@ -83,3 +87,13 @@ class ListingLike(View):
             listing.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('listing_detail', args=[slug]))
+
+class AddListing(LoginRequiredMixin, CreateView):
+    template_name = 'listings/add_listing.html'
+    model = Listing
+    form_class = ListingForm
+    success_url = '/listings/'
+
+    def form_valid(self, form):
+        form.instance.seller = self.request.user
+        return super(AddListing, self).form_valid(form)

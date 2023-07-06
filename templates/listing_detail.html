@@ -50,6 +50,17 @@
                             <span class="text-secondary">{{ listing.number_of_likes }}</span>
                         </strong>
                     </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Price: {{ listing.price }} {{ listing.currency }}</h3>
+                                <p>Engine: {{ listing.engine }}</p>
+                                <p>Fuel: {{ listing.get_fuel_display }}</p>
+                                <p>Year: {{ listing.year }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="col-1">
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="fa-regular fa-comments"></i> {{ total_comments }}</strong>
