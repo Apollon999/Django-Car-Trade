@@ -22,6 +22,9 @@ class ListingDetail(View):
         if listing.likes.filter(id=self.request.user.id).exists():
             liked = True
 
+        price = listing.price.amount
+        currency = listing.price.currency
+
         return render(
             request,
             "listing_detail.html",
@@ -31,7 +34,9 @@ class ListingDetail(View):
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
-                "comment_form": CommentForm()
+                "comment_form": CommentForm(),
+                "price": price,
+                "currency": currency,
             },
         )
 
