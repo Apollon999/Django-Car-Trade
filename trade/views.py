@@ -22,8 +22,8 @@ class ListingDetail(View):
         if listing.likes.filter(id=self.request.user.id).exists():
             liked = True
 
-        price = listing.price.amount
-        currency = listing.price.currency
+        price = listing.price
+        currency = listing.price
 
         return render(
             request,
