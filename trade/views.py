@@ -89,10 +89,10 @@ class ListingLike(View):
         return HttpResponseRedirect(reverse('listing_detail', args=[slug]))
 
 class AddListing(LoginRequiredMixin, CreateView):
-    template_name = 'listings/add_listing.html'
+    template_name = 'trade/add_listing.html'
     model = Listing
     form_class = ListingForm
-    success_url = '/listings/'
+    success_url = '/trade/'
 
     def form_valid(self, form):
         form.instance.seller = self.request.user
