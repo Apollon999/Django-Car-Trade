@@ -19,7 +19,7 @@ class ListingForm(forms.ModelForm):
         fuel = forms.CharField(widget=RichTextWidget())
 
         widget = {
-            'description': forms.TextArea(attrs={'rows': 5}),
+            'description': forms.Textarea(attrs={'rows': 5}),
         }
 
         labels = {
