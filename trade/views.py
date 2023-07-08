@@ -92,7 +92,7 @@ class AddListing(LoginRequiredMixin, CreateView):
     template_name = 'listings/add_listing.html'
     model = Listing
     form_class = ListingForm
-    success_url = '/trade/'
+    success_url = 'home'
 
     def form_valid(self, form):
         form.instance.seller = self.request.user

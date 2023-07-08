@@ -39,7 +39,7 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li  class="nav-item">
-                        <a class="nav-link {% if url_name == 'add_listing' %}active{% endif %}" href="{% url 'add_listing'}">New Listing</a>
+                        <a class="nav-link {% if url_name == 'add_listing' %}active{% endif %}" href="{% url 'add_listing' %}">New Listing</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
