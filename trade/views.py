@@ -7,6 +7,7 @@ from django.views.generic import CreateView
 
 from .forms import ListingForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 
 class ListingList(generic.ListView):
@@ -96,4 +97,5 @@ class AddListing(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.seller = self.request.user
+        messages.success(self.request, 'Listing created. Waiting for approval.')
         return super(AddListing, self).form_valid(form)
