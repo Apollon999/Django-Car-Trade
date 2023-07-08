@@ -13,7 +13,7 @@ class CommentForm(forms.ModelForm):
 class ListingForm(forms.ModelForm):
     class Meta:
         model = Listing
-        fields = ['title', 'seller', 'price', 'currency', 'engine', 'fuel', 'year', 'description', 'featured_image',]
+        fields = ['title', 'seller', 'price', 'currency', 'engine', 'fuel', 'year', 'description', 'featured_image', 'slug']
 
         engine = forms.CharField(widget=RichTextWidget())
         fuel = forms.CharField(widget=RichTextWidget())
@@ -32,6 +32,7 @@ class ListingForm(forms.ModelForm):
             'fuel': 'Fuel',
             'year': 'Production Year',
             'featured_image': 'Vehicle Image',
+            'slug': 'slug',
         }
 
 
