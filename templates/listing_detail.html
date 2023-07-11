@@ -60,7 +60,12 @@
                             </div>
                         </div>
                     </div>
-                    
+
+                    {% if request.user == listing.user %}
+                    <div class="text-center">
+                        <a href="{% url 'delete_listing' listing.id %}" class="btn btn-primary w-25">Delete</a>
+                    </div>
+                    {% endif %}
                     <div class="col-1">
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="fa-regular fa-comments"></i> {{ total_comments }}</strong>

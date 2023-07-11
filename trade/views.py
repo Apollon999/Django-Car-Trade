@@ -3,10 +3,10 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Listing
 from .forms import CommentForm
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DeleteView
 
 from .forms import ListingForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 
@@ -100,3 +100,10 @@ class AddListing(LoginRequiredMixin, CreateView):
         form.instance.seller = self.request.user
         messages.success(self.request, 'Listing created. Waiting for approval.')
         return super(AddListing, self).form_valid(form)
+
+class DeleteListing(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Listing
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
