@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Listing
@@ -8,6 +8,7 @@ from django.views.generic import CreateView
 from .forms import ListingForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.urls import reverse_lazy, reverse
 
 
 class ListingList(generic.ListView):
@@ -93,7 +94,7 @@ class AddListing(LoginRequiredMixin, CreateView):
     template_name = 'listings/add_listing.html'
     model = Listing
     form_class = ListingForm
-    success_url = '/home/'
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         form.instance.seller = self.request.user
