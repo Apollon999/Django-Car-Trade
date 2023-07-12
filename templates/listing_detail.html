@@ -61,7 +61,7 @@
                         </div>
                     </div>
 
-                    {% if request.user == listing.user %}
+                    {% if request.user == listing.seller %}
                     <div class="text-center">
                         <a href="{% url 'delete_listing' listing.id %}" class="btn btn-primary w-25">Delete</a>
                     </div>
@@ -121,4 +121,3 @@
 </div>
 
 {% endblock content %}
-                   

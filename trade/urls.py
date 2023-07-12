@@ -9,5 +9,5 @@ urlpatterns = [
   #  path('home/', views.ListingList.as_view(), name='home'),
     path('<slug:slug>/', views.ListingDetail.as_view(), name='listing_detail'),
     path('like/<slug:slug>/', views.ListingLike.as_view(), name='listing_like'),
-    path('delete/<slug:slug>/', DeleteListing.as_view(), name='delete_listing'),
+    path('delete/<int:pk>/', DeleteListing.as_view(template_name='listing_confirm_delete.html'), name='delete_listing'),
 ]

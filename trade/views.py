@@ -103,7 +103,9 @@ class AddListing(LoginRequiredMixin, CreateView):
 
 class DeleteListing(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Listing
-    success_url = reverse_lazy('home')
+    success_url = 'home'
+    template_name = "listing_confirm_delete.html"
 
     def test_func(self):
-        return self.request.user == self.get_object().user
+        listing = self.get_object()
+        return self.request.user == listing.seller
