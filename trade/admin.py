@@ -13,7 +13,6 @@ class ListingAdmin(SummernoteModelAdmin):
     list_filter = ('status', 'created_on')
     summernote_fields = ('description',)
 
-
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
 

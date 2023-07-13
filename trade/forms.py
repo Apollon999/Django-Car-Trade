@@ -3,8 +3,6 @@ from django import forms
 from djrichtextfield.widgets import RichTextWidget
 from .models import Listing
 
-
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

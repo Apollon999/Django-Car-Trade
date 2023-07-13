@@ -10,5 +10,4 @@ urlpatterns = [
     path('like/<slug:slug>/', views.ListingLike.as_view(), name='listing_like'),
     path('delete/<int:pk>/', DeleteListing.as_view(template_name='listing_confirm_delete.html'), name='delete_listing'),
     path('edit/<int:pk>/', EditListing.as_view(template_name='edit_listing.html'), name='edit_listing'),
-
 ]

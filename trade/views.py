@@ -10,14 +10,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 
-
-
 class ListingList(generic.ListView):
     model = Listing
     queryset = Listing.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
     paginate_by = 15
-
 
 class ListingDetail(View):
 

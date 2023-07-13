@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-
 STATUS = ((0, "Draft"), (1, "Published"))
 
 #Defining the structure and attributes of the Listing model.
@@ -31,7 +30,7 @@ class Listing(models.Model):
     likes = models.ManyToManyField(User, related_name='trade_likes', blank=True)
 
     # Deciding a descending order to each listing on the feed.
-    class Meta:
+    class Meta():
         ordering = ['-created_on']
 
     def __str__(self):
@@ -52,8 +51,8 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
 
     # Customizes and controls how the Comment model will be displayed.
-    class Meta:
-        ordering = ['created_on']
+class Meta():
+    ordering = ['created_on']
 
     def __str__(self):
         return f"comment {self.body} by {self.name}"
