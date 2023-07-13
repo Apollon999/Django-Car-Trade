@@ -91,7 +91,7 @@ class ListingLike(View):
         return HttpResponseRedirect(reverse('listing_detail', args=[slug]))
 
 class AddListing(LoginRequiredMixin, CreateView):
-    template_name = 'listings/add_listing.html'
+    template_name = 'trade/add_listing.html'
     model = Listing
     form_class = ListingForm
     success_url = reverse_lazy('home')
@@ -103,8 +103,8 @@ class AddListing(LoginRequiredMixin, CreateView):
 
 class DeleteListing(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Listing
-    success_url = 'home'
-    template_name = "listing_confirm_delete.html"
+    success_url = reverse_lazy('home')
+    template_name = "templates/listing_confirm_delete.html"
 
     def test_func(self):
         listing = self.get_object()
