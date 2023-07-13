@@ -3,12 +3,13 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Listing
 from .forms import CommentForm
-from django.views.generic import CreateView, DeleteView
+from django.views.generic import CreateView, DeleteView, UpdateView
 
 from .forms import ListingForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
+
 
 
 class ListingList(generic.ListView):
@@ -100,6 +101,16 @@ class AddListing(LoginRequiredMixin, CreateView):
         form.instance.seller = self.request.user
         messages.success(self.request, 'Listing created. Waiting for approval.')
         return super(AddListing, self).form_valid(form)
+
+class EditListing(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = "templates/edit_listing.html"
+    model = Listing
+    form_class = ListingForm
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        listing = self.get_object()
+        return self.request.user == listing.seller
 
 class DeleteListing(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Listing
